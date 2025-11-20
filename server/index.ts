@@ -1,9 +1,9 @@
 import express, { type Request, Response, NextFunction } from "express";
-import { registerRoutes } from "./routes";
-import { setupVite, serveStatic, log } from "./vite";
+// 👇 ADD ".js" TO THESE IMPORTS (Even though the files are .ts)
+import { registerRoutes } from "./routes.js";
+import { setupVite, serveStatic, log } from "./vite.js"; 
 
 const app = express();
-
 declare module 'http' {
   interface IncomingMessage {
     rawBody: unknown

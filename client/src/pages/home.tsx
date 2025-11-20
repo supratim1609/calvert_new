@@ -111,6 +111,10 @@ export default function Home() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+          
+          {/* Pulse Effect - Futuristic Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] animate-pulse opacity-30" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-white/5 rounded-full animate-[spin_20s_linear_infinite] opacity-20" />
         </div>
 
         <div className="container mx-auto px-4 relative z-10 grid lg:grid-cols-2 gap-12 items-center h-full">
@@ -302,7 +306,7 @@ export default function Home() {
                        </div>
                        <div>
                           <div className="text-xs text-white/40 uppercase tracking-wider">Headquarters</div>
-                          <div>Salt Lake Sector V, Kolkata</div>
+                          <div>Kolkata, India</div>
                        </div>
                     </div>
                     <div className="flex items-center gap-4 text-lg">

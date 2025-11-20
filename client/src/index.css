@@ -35,68 +35,54 @@
   
   --font-sans: "DM Sans", sans-serif;
   --font-display: "Syne", sans-serif;
+  --font-bengali: "Noto Sans Bengali", sans-serif;
+  
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+  
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  @keyframes glow {
+    from { box-shadow: 0 0 10px -10px var(--color-primary); }
+    to { box-shadow: 0 0 20px 5px var(--color-primary); }
+  }
 }
 
+/* Forced Dark Mode by default as requested */
 :root {
-  --background: 30 20% 96%; /* Warm Cream */
-  --foreground: 230 40% 10%; /* Deep Navy */
-
-  --card: 0 0% 100%;
-  --card-foreground: 230 40% 10%;
- 
-  --popover: 0 0% 100%;
-  --popover-foreground: 230 40% 10%;
- 
-  --primary: 230 60% 50%; /* Vibrant Indigo */
-  --primary-foreground: 0 0% 100%;
- 
-  --secondary: 20 80% 60%; /* Terracotta */
-  --secondary-foreground: 0 0% 100%;
- 
-  --muted: 230 20% 90%;
-  --muted-foreground: 230 20% 40%;
- 
-  --accent: 230 30% 94%;
-  --accent-foreground: 230 40% 10%;
- 
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
-
-  --border: 230 20% 85%;
-  --input: 230 20% 85%;
-  --ring: 230 60% 50%;
- 
-  --radius: 0.5rem;
-}
-
-.dark {
-  --background: 230 40% 5%;
-  --foreground: 30 20% 96%;
- 
-  --card: 230 40% 8%;
-  --card-foreground: 30 20% 96%;
- 
-  --popover: 230 40% 8%;
-  --popover-foreground: 30 20% 96%;
- 
-  --primary: 230 60% 60%;
-  --primary-foreground: 0 0% 100%;
- 
-  --secondary: 20 80% 60%;
-  --secondary-foreground: 0 0% 100%;
- 
-  --muted: 230 30% 15%;
-  --muted-foreground: 230 20% 70%;
- 
-  --accent: 230 30% 15%;
-  --accent-foreground: 30 20% 96%;
- 
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  
+  --primary: 180 100% 50%; /* Electric Cyan */
+  --primary-foreground: 240 5.9% 10%;
+  
+  --secondary: 300 100% 50%; /* Neon Magenta */
+  --secondary-foreground: 0 0% 98%;
+  
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  
   --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
- 
-  --border: 230 30% 15%;
-  --input: 230 30% 15%;
-  --ring: 230 60% 60%;
+  --destructive-foreground: 0 0% 98%;
+  
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 240 4.9% 83.9%;
+  
+  --radius: 0.75rem;
 }
 
 @layer base {
@@ -104,9 +90,22 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/20 selection:text-primary;
+    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/30 selection:text-primary;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-display font-bold tracking-tight;
   }
+}
+
+/* Custom Utilities for 3D effects */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-xl;
 }

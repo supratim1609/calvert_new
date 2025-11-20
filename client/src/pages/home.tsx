@@ -16,63 +16,6 @@ import workAI from "@assets/generated_images/ai_data_visualization_with_neural_n
 import workMap from "@assets/generated_images/cyberpunk_city_navigation_map_holographic_ui.png";
 import workEcommerce from "@assets/generated_images/sleek_e-commerce_mobile_app_interface_floating_screens.png";
 
-// --- Icons ---
-
-const ReactIcon = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M12 0c-1.32 0-2.5.36-3.48.97-1.88 1.17-2.9 3.36-2.9 6.23 0 1.1.15 2.14.43 3.08C3.13 9.2 1.03 8.27.18 9.7c-.86 1.44.06 3.28 2.22 4.63-.05.37-.08.74-.08 1.12 0 2.87 1.02 5.06 2.9 6.23.98.61 2.16.97 3.48.97 1.32 0 2.5-.36 3.48-.97 1.88-1.17 2.9-3.36 2.9-6.23 0-1.1-.15-2.14-.43-3.08 2.92 1.08 5.02 2.01 5.87.58.86-1.44-.06-3.28-2.22-4.63.05-.37.08-.74.08-1.12 0-2.87-1.02-5.06-2.9-6.23-.98-.61-2.16-.97-3.48-.97zm0 10.7c.72 0 1.3.58 1.3 1.3s-.58 1.3-1.3 1.3-1.3-.58-1.3-1.3.58-1.3 1.3-1.3z" />
-  </svg>
-);
-
-const NextIcon = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm4.8 17.6l-7.6-9.6v9.6H7.6V6.4h1.6l7.6 9.6V6.4h1.6v11.2h-1.6z" />
-  </svg>
-);
-
-const NodeIcon = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M12 0L1.6 6v12L12 24l10.4-6V6L12 0zm5.2 14.6c-2.1 1.2-4.3 2.4-6.5 3.6l-4.8-2.7v-5.4l4.8-2.7 4.8 2.7v1.9h-1.8v-.8l-3-1.7-3 1.7v3.4l3 1.7 4.8-2.7v1z" />
-  </svg>
-);
-
-const PythonIcon = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M12 0c-3.3 0-6 2.7-6 6v3h3V6h6v6h-3v3h6c1.7 0 3-1.3 3-3V6c0-3.3-2.7-6-6-6zm-6 9c-1.7 0-3 1.3-3 3v6c0 3.3 2.7 6 6 6h6c3.3 0 6-2.7 6-6v-3h-3v3h-6v-6h3v-3H6z" />
-  </svg>
-);
-
-const AwsIcon = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M16.6 14.8c-1.1.5-2.6.8-4.1.8-2.3 0-4-1.3-4-3.6 0-2.5 1.9-3.7 4.2-3.7 1.4 0 2.5.4 3.4 1.1v5.4zM12.8 6c-3.9 0-6.7 2.5-6.7 6.2 0 3.6 2.6 6.1 6.4 6.1 1.7 0 3.1-.5 4.2-1.2v.9c0 1.8-1.4 2.6-3.5 2.6-1.8 0-3.1-.5-4.2-1.2l-.8 1.8c1.3.9 3.1 1.6 5.3 1.6 3.7 0 5.7-1.9 5.7-5.1V9.1c0-2.2.2-3-.4-3.6-.5-.5-1.5-.8-2.6-.8-1.1 0-2.3.4-3.4 1.3zM22 18.4c-1.6 1.3-4.5 2.6-8.8 2.6-2.9 0-5.2-.5-6.7-1.2l.8-1.7c1.3.6 3.3 1.1 5.8 1.1 3.6 0 5.9-1 7.2-1.9l1.7 1.1z" />
-  </svg>
-);
-
-const DockerIcon = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M1.5 11.5h2.1v2.6H1.5v-2.6zm2.8 0h2.1v2.6H4.3v-2.6zm2.8 0h2.1v2.6H7.1v-2.6zm2.8 0h2.1v2.6H9.9v-2.6zm2.8 0h2.1v2.6h-2.1v-2.6zm-11.2 3.2h2.1v2.6H1.5v-2.6zm2.8 0h2.1v2.6H4.3v-2.6zm2.8 0h2.1v2.6H7.1v-2.6zm2.8 0h2.1v2.6H9.9v-2.6zm2.8 0h2.1v2.6h-2.1v-2.6zm2.8 0h2.1v2.6h-2.1v-2.6zm2.8-6.4h2.1v2.6h-2.1V8.3zm0 3.2h2.1v2.6h-2.1v-2.6zm2.8 0h2.1v2.6h-2.1v-2.6zM24 14.5c-.1-2.1-1.4-2.9-2.9-3.2v-.5c0-1.4-1.1-2.6-2.6-2.6h-6.3v8.9h.5c.5 0 1 .1 1.4.3.6-1.2 1.8-2 3.2-2 2 0 3.6 1.6 3.6 3.6 0 .5-.1 1-.3 1.4H24v-5.9z" />
-  </svg>
-);
-
-const TypeScriptIcon = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M2.4 0h19.2C22.9 0 24 1.1 24 2.4v19.2c0 1.3-1.1 2.4-2.4 2.4H2.4C1.1 24 0 22.9 0 21.6V2.4C0 1.1 1.1 0 2.4 0zm9.6 18v-9.6h-2.4v-2.4h7.2v2.4h-2.4v9.6h-2.4zm6-8.4c0-1.3.9-2.4 2.4-2.4s2.4 1.1 2.4 2.4v1.2h-2.4v-1.2c0-.7-.5-1.2-1.2-1.2s-1.2.5-1.2 1.2v1.2l3.6 1.8v3.6c0 1.3-.9 2.4-2.4 2.4s-2.4-1.1-2.4-2.4v-1.2h2.4v1.2c0 .7.5 1.2 1.2 1.2s1.2-.5 1.2-1.2v-1.2l-3.6-1.8v-3.6z" />
-  </svg>
-);
-
-const TailwindIcon = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M12.8 6c-1.3-1.3-3.1-1.9-5.3-1.9-2.2 0-4 .6-5.3 1.9C.9 7.3.3 9.1.3 11.3c0 2.2.6 4 1.9 5.3 1.3 1.3 3.1 1.9 5.3 1.9 2.2 0 4-.6 5.3-1.9 1.3-1.3 1.9-3.1 1.9-5.3 0-2.2-.6-4-1.9-5.3zm-3.2 8.4c-.8.8-1.9 1.2-3.2 1.2s-2.4-.4-3.2-1.2c-.8-.8-1.2-1.9-1.2-3.2s.4-2.4 1.2-3.2c.8-.8 1.9-1.2 3.2-1.2s2.4.4 3.2 1.2c.8.8 1.2 1.9 1.2 3.2s-.4 2.4-1.2 3.2zm11.2-8.4c-1.3-1.3-3.1-1.9-5.3-1.9-2.2 0-4 .6-5.3 1.9-1.3 1.3-1.9 3.1-1.9 5.3 0 2.2.6 4 1.9 5.3 1.3 1.3 3.1 1.9 5.3 1.9 2.2 0 4-.6 5.3-1.9 1.3-1.3 1.9-3.1 1.9-5.3 0-2.2-.6-4-1.9-5.3zm-3.2 8.4c-.8.8-1.9 1.2-3.2 1.2s-2.4-.4-3.2-1.2c-.8-.8-1.2-1.9-1.2-3.2s.4-2.4 1.2-3.2c.8-.8 1.9-1.2 3.2-1.2s2.4.4 3.2 1.2c.8.8 1.2 1.9 1.2 3.2s-.4 2.4-1.2 3.2z" />
-  </svg>
-);
-
-const PostgreSqlIcon = (props: any) => (
-    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-        <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 2.4c5.3 0 9.6 4.3 9.6 9.6s-4.3 9.6-9.6 9.6-9.6-4.3-9.6-9.6 4.3-9.6 9.6-9.6zm-1.2 4.8c-2.6 0-4.8 2.2-4.8 4.8s2.2 4.8 4.8 4.8 4.8-2.2 4.8-4.8-2.2-4.8-4.8-4.8z"/>
-    </svg>
-);
-
-
 // --- Components ---
 
 const ParallaxText = ({ children, baseVelocity = 100 }: { children: string; baseVelocity?: number }) => {
@@ -157,18 +100,6 @@ export default function Home() {
     { name: "Ananya Bose", role: "3D ARTIST", image: teamAvatar },
   ];
 
-  const techStack = [
-    { name: "REACT", icon: ReactIcon },
-    { name: "NEXT.JS", icon: NextIcon },
-    { name: "NODE", icon: NodeIcon },
-    { name: "PYTHON", icon: PythonIcon },
-    { name: "AWS", icon: AwsIcon },
-    { name: "DOCKER", icon: DockerIcon },
-    { name: "TYPESCRIPT", icon: TypeScriptIcon },
-    { name: "TAILWIND", icon: TailwindIcon },
-    { name: "POSTGRESQL", icon: PostgreSqlIcon },
-  ];
-
   return (
     <div ref={targetRef} className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary/30 cursor-none">
       <Preloader />
@@ -228,23 +159,6 @@ export default function Home() {
       <div className="py-12 border-y border-white/5 bg-black/50 backdrop-blur-sm overflow-hidden">
         <ParallaxText>Innovation • Strategy • Design • Development • </ParallaxText>
       </div>
-
-      {/* Tech Stack Section - NEW */}
-      <section className="py-20 bg-white/[0.02] border-b border-white/5">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-             <div className="text-sm font-mono text-muted-foreground uppercase tracking-widest">Powering Next-Gen Solutions With</div>
-             <div className="flex flex-wrap justify-center gap-8 md:gap-12 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-                {techStack.map((tech, i) => (
-                   <div key={i} className="flex items-center gap-3 group hover:scale-110 transition-transform duration-300">
-                      <tech.icon className="h-8 w-8 group-hover:text-primary transition-colors" />
-                      <span className="font-display font-bold text-lg">{tech.name}</span>
-                   </div>
-                ))}
-             </div>
-          </div>
-        </div>
-      </section>
 
       {/* Expanded Services Section */}
       <section id="services" className="py-32 relative z-10">

@@ -9,6 +9,7 @@ declare module 'http' {
     rawBody: unknown
   }
 }
+
 app.use(express.json({
   verify: (req, _res, buf) => {
     req.rawBody = buf;
@@ -46,36 +47,58 @@ app.use((req, res, next) => {
   next();
 });
 
-(async () => {
+// --- REPLIT / VERCEL COMPATIBILITY LOGIC ---
+
+let serverInitialized = false;
+let serverInstance: any = null;
+
+const setupServer = async () => {
+  // If already set up, return the existing server instance
+  if (serverInitialized) return serverInstance;
+
   const server = await registerRoutes(app);
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
-
     res.status(status).json({ message });
     throw err;
   });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
   if (app.get("env") === "development") {
     await setupVite(app, server);
   } else {
     serveStatic(app);
   }
 
-  // ALWAYS serve the app on the port specified in the environment variable PORT
-  // Other ports are firewalled. Default to 5000 if not specified.
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
-  const port = parseInt(process.env.PORT || '5000', 10);
-  server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
-    log(`serving on port ${port}`);
-  });
-})();
+  serverInitialized = true;
+  serverInstance = server;
+  return server;
+};
+
+// 1. VERCEL EXPORT
+// Vercel treats this file as a Serverless Function. 
+// We export a handler that initializes the app once, then passes the request.
+export default async (req: any, res: any) => {
+  if (!serverInitialized) {
+    await setupServer();
+  }
+  // Pass the request to Express
+  app(req, res);
+};
+
+// 2. LOCAL DEV / REPLIT FALLBACK
+// If we are NOT running on Vercel, we start the listener manually.
+if (process.env.NODE_ENV !== "production") {
+  (async () => {
+    const server = await setupServer();
+    const port = parseInt(process.env.PORT || '5000', 10);
+    server.listen({
+      port,
+      host: "0.0.0.0",
+      reusePort: true,
+    }, () => {
+      log(`serving on port ${port}`);
+    });
+  })();
+}

@@ -3,8 +3,10 @@ import { Footer } from "@/components/layout/footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { CustomCursor } from "@/components/ui/custom-cursor";
+import { Preloader } from "@/components/ui/preloader";
 import { motion, useScroll, useTransform, useSpring, useMotionValue, useMotionTemplate } from "framer-motion";
-import { ArrowRight, Layout, Smartphone, Layers, Cpu, Network, Globe, Zap, Database, Cloud, Lock, Send } from "lucide-react";
+import { ArrowRight, Layout, Smartphone, Layers, Cpu, Network, Globe, Zap, Database, Cloud, Lock, Send, Code2, Server, Terminal } from "lucide-react";
 import { useRef } from "react";
 import heroImage from "@assets/generated_images/futuristic_3d_kolkata_city_abstraction.png";
 import aboutImage from "@assets/generated_images/3d_glass_abstract_shape_with_bengali_typography_influence.png";
@@ -98,8 +100,19 @@ export default function Home() {
     { name: "Ananya Bose", role: "3D ARTIST", image: teamAvatar },
   ];
 
+  const techStack = [
+    { name: "REACT", icon: Code2 },
+    { name: "NEXT.JS", icon: Layers },
+    { name: "NODE", icon: Server },
+    { name: "PYTHON", icon: Terminal },
+    { name: "AWS", icon: Cloud },
+    { name: "DOCKER", icon: Database },
+  ];
+
   return (
-    <div ref={targetRef} className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary/30 cursor-default">
+    <div ref={targetRef} className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary/30 cursor-none">
+      <Preloader />
+      <CustomCursor />
       <div className="bg-noise" />
       <Navbar />
       
@@ -129,7 +142,7 @@ export default function Home() {
             </p>
             
             <div className="flex flex-wrap gap-6 pt-4">
-              <Button size="lg" className="group relative overflow-hidden rounded-none border border-primary bg-primary/10 text-primary hover:text-black h-14 px-10 text-sm uppercase tracking-widest transition-all duration-500">
+              <Button size="lg" className="group relative overflow-hidden rounded-none border border-primary bg-primary/10 text-primary hover:text-black h-14 px-10 text-sm uppercase tracking-widest transition-all duration-500 cursor-none">
                 <span className="absolute inset-0 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ease-[cubic-bezier(0.19,1,0.22,1)]" />
                 <span className="relative z-10 flex items-center gap-2 font-bold">
                   Initiate <ArrowRight className="h-4 w-4" />
@@ -155,6 +168,23 @@ export default function Home() {
       <div className="py-12 border-y border-white/5 bg-black/50 backdrop-blur-sm overflow-hidden">
         <ParallaxText>Innovation • Strategy • Design • Development • </ParallaxText>
       </div>
+
+      {/* Tech Stack Section - NEW */}
+      <section className="py-20 bg-white/[0.02] border-b border-white/5">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+             <div className="text-sm font-mono text-muted-foreground uppercase tracking-widest">Powering Next-Gen Solutions With</div>
+             <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+                {techStack.map((tech, i) => (
+                   <div key={i} className="flex items-center gap-3 group">
+                      <tech.icon className="h-6 w-6 group-hover:text-primary transition-colors" />
+                      <span className="font-display font-bold text-lg">{tech.name}</span>
+                   </div>
+                ))}
+             </div>
+          </div>
+        </div>
+      </section>
 
       {/* Expanded Services Section */}
       <section id="services" className="py-32 relative z-10">
@@ -185,6 +215,39 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Process / How We Work - NEW */}
+      <section className="py-32 bg-black border-y border-white/5 relative overflow-hidden">
+         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
+         <div className="container mx-auto px-4 relative z-10">
+            <div className="mb-24 text-center">
+               <h2 className="font-display text-5xl font-bold mb-6">THE <span className="text-primary">ALGORITHM</span></h2>
+               <p className="text-muted-foreground max-w-2xl mx-auto">Our proven methodology for delivering excellence, from initialization to deployment.</p>
+            </div>
+            
+            <div className="grid md:grid-cols-4 gap-8 relative">
+               {/* Connecting Line */}
+               <div className="hidden md:block absolute top-12 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent z-0" />
+               
+               {[
+                  { step: "01", title: "DISCOVERY", desc: "We decode your vision and map the requirements." },
+                  { step: "02", title: "DESIGN", desc: "Visualizing the architecture with high-fidelity prototypes." },
+                  { step: "03", title: "BUILD", desc: "Writing clean, scalable code in our secure dev environment." },
+                  { step: "04", title: "DEPLOY", desc: "Launching your digital asset to the global network." }
+               ].map((phase, i) => (
+                  <div key={i} className="relative z-10 group">
+                     <div className="w-24 h-24 bg-black border border-white/10 rounded-full flex items-center justify-center text-2xl font-mono font-bold text-white/30 group-hover:text-primary group-hover:border-primary transition-all duration-500 mb-8 mx-auto shadow-[0_0_30px_-10px_rgba(0,0,0,1)]">
+                        {phase.step}
+                     </div>
+                     <div className="text-center px-4">
+                        <h3 className="text-xl font-bold font-display mb-3">{phase.title}</h3>
+                        <p className="text-sm text-muted-foreground">{phase.desc}</p>
+                     </div>
+                  </div>
+               ))}
+            </div>
+         </div>
+      </section>
+
       {/* Work / Projects Section */}
       <section id="projects" className="py-32 bg-black relative">
          <div className="container mx-auto px-4">
@@ -195,7 +258,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-16">
                {projects.map((project, i) => (
                  <div key={i} className={`group relative ${i % 2 === 1 ? "md:mt-24" : ""}`}>
-                    <div className="relative overflow-hidden aspect-video border border-white/10 bg-white/5 mb-6">
+                    <div className="relative overflow-hidden aspect-video border border-white/10 bg-white/5 mb-6 cursor-none">
                        <div className="absolute inset-0 bg-primary/20 z-10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                        <img src={project.image} alt={project.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                     </div>
@@ -211,7 +274,7 @@ export default function Home() {
             </div>
             
             <div className="mt-24 text-center">
-               <Button variant="outline" className="rounded-none border-white/20 hover:bg-white hover:text-black h-14 px-12 uppercase tracking-widest">
+               <Button variant="outline" className="rounded-none border-white/20 hover:bg-white hover:text-black h-14 px-12 uppercase tracking-widest cursor-none">
                   View All Projects
                </Button>
             </div>
@@ -231,7 +294,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-4 gap-4">
             {teamMembers.map((member, i) => (
-              <div key={i} className="group relative cursor-pointer grayscale hover:grayscale-0 transition-all duration-500 ease-out">
+              <div key={i} className="group relative cursor-none grayscale hover:grayscale-0 transition-all duration-500 ease-out">
                 <div className="relative overflow-hidden aspect-[3/4] bg-white/5 mb-4">
                   <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-overlay" />
                   <img src={member.image} alt={member.name} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
@@ -287,18 +350,18 @@ export default function Home() {
                     <div className="grid grid-cols-2 gap-6">
                        <div className="space-y-2">
                           <label className="text-xs font-mono uppercase text-white/50">Identity</label>
-                          <Input className="bg-white/5 border-white/10 rounded-none h-12 focus-visible:ring-primary/50" placeholder="NAME" />
+                          <Input className="bg-white/5 border-white/10 rounded-none h-12 focus-visible:ring-primary/50 cursor-none" placeholder="NAME" />
                        </div>
                        <div className="space-y-2">
                           <label className="text-xs font-mono uppercase text-white/50">Contact</label>
-                          <Input className="bg-white/5 border-white/10 rounded-none h-12 focus-visible:ring-primary/50" placeholder="EMAIL" />
+                          <Input className="bg-white/5 border-white/10 rounded-none h-12 focus-visible:ring-primary/50 cursor-none" placeholder="EMAIL" />
                        </div>
                     </div>
                     <div className="space-y-2">
                        <label className="text-xs font-mono uppercase text-white/50">Directives</label>
-                       <Textarea className="bg-white/5 border-white/10 rounded-none min-h-[150px] focus-visible:ring-primary/50 resize-none" placeholder="PROJECT DETAILS..." />
+                       <Textarea className="bg-white/5 border-white/10 rounded-none min-h-[150px] focus-visible:ring-primary/50 resize-none cursor-none" placeholder="PROJECT DETAILS..." />
                     </div>
-                    <Button size="lg" className="w-full bg-primary text-black hover:bg-primary/90 rounded-none h-14 uppercase tracking-widest font-bold">
+                    <Button size="lg" className="w-full bg-primary text-black hover:bg-primary/90 rounded-none h-14 uppercase tracking-widest font-bold cursor-none">
                        Transmit Data
                     </Button>
                  </form>

@@ -9,9 +9,9 @@ export function Navbar() {
 
   const links = [
     { href: "#services", label: "Services" },
-    { href: "#about", label: "About" },
     { href: "#projects", label: "Work" },
     { href: "#team", label: "Team" },
+    { href: "#contact", label: "Contact" },
   ];
 
   return (
@@ -38,7 +38,7 @@ export function Navbar() {
             </a>
           ))}
           <Button className="rounded-none border border-primary/50 bg-primary/10 text-primary hover:bg-primary hover:text-background transition-all duration-300 backdrop-blur-sm shadow-[0_0_15px_-5px_var(--color-primary)]">
-            Let's Talk
+            Start Project
           </Button>
         </div>
 

@@ -35,10 +35,10 @@
   
   --font-sans: "DM Sans", sans-serif;
   --font-display: "Syne", sans-serif;
-  --font-bengali: "Noto Sans Bengali", sans-serif;
   
   --animate-float: float 6s ease-in-out infinite;
   --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-grain: grain 8s steps(10) infinite;
   
   @keyframes float {
     0% { transform: translateY(0px); }
@@ -49,6 +49,19 @@
   @keyframes glow {
     from { box-shadow: 0 0 10px -10px var(--color-primary); }
     to { box-shadow: 0 0 20px 5px var(--color-primary); }
+  }
+  
+  @keyframes grain {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-5%, -10%); }
+    20% { transform: translate(-15%, 5%); }
+    30% { transform: translate(7%, -25%); }
+    40% { transform: translate(-5%, 25%); }
+    50% { transform: translate(-15%, 10%); }
+    60% { transform: translate(15%, 0%); }
+    70% { transform: translate(0%, 15%); }
+    80% { transform: translate(3%, 35%); }
+    90% { transform: translate(-10%, 10%); }
   }
 }
 
@@ -97,7 +110,7 @@
   }
 }
 
-/* Custom Utilities for 3D effects */
+/* Custom Utilities */
 .perspective-1000 {
   perspective: 1000px;
 }
@@ -108,4 +121,29 @@
 
 .glass-card {
   @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-xl;
+}
+
+.bg-noise {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200vh;
+  background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
+  background-repeat: repeat;
+  animation: grain 8s steps(10) infinite;
+  opacity: 0.05;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Hide scrollbar for marquee */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
